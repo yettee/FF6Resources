@@ -12,7 +12,7 @@ class FF6Font(object):
 		self.__rawdata=rawdata		#Raw data loading
 		self.__nRows=rawdata[4]		#number of rows in symbol (byte) 
 		self.__nSymbols=rawdata[6]+0x100*rawdata[7] #number of symbols in font (word)
-		
+		self.__EOS=rawdata[8] #End of string symbol
 
 
 		#get alphabet
@@ -42,6 +42,9 @@ class FF6Font(object):
 	def getfontprops(self):			#return font properties
 		return {"nRows":self.__nRows,"nSymbols":self.__nSymbols}
 
+	def getEOSsymbol(self):			#return End of string symbol
+		return self.__EOS
+		
 	def getfontsymbol(self,rawsprite,nColumns,palette):
 		symbol=[]
 		iRow=0
